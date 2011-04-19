@@ -1,20 +1,14 @@
-Array.prototype.clean = function(deleteValue) {
-  for (var i = 0; i < this.length; i++) {
-    if (this[i] == deleteValue) {         
-      this.splice(i, 1);
-      i--;
-    }
-  }
-  return this;
-};
+// Include important JS helpers
+require('./helpers.js');
 
-var express = require('express'),
-		app = express.createServer(),
-		io = require('socket.io'); 
+var express = require('express'), // Include express engine
+		app = express.createServer(), // create node server
+		io = require('socket.io');  // Include Socket IO
 
+// Default APP Configuration
 app.configure(function(){
-  app.set('view engine', 'jade');
-  app.set('views', __dirname + '/views');
+  app.set('view engine', 'jade'); // uses JADE templating engine
+  app.set('views', __dirname + '/views'); // default dir for views
   app.use(express.methodOverride());
   app.use(express.logger());
   app.use(app.router);
@@ -25,6 +19,7 @@ app.configure('development', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
+// Index Route
 app.get('/', function(req, res){ 
 	res.render('index', {
 		locals: {
@@ -33,14 +28,16 @@ app.get('/', function(req, res){
 	});
 });
 
+// Listen on this port
 app.listen(9536); 
   
+// Socket Connection
 var socket = io.listen(app),
- 		clients = [];
+ 		clients = []; // List of all connected Clients
 
+// When user gets connected
 socket.on('connection', function(client){ 
 	// new client is here! 
-	console.log("length ===> " +clients.length);
 	var index = clients.push(client) - 1; // get array index of new client
 	
 	// On Message, send message to everyone
@@ -51,7 +48,7 @@ socket.on('connection', function(client){
 		for(var i=0;i<clients.length;i++) {
 			try {
 				if(clients[i] != undefined)
-					clients[i].send(data.msg);
+					clients[i].send(data.msg); // send to all connected clients
 			} catch(e) {
 				console.log("doesn`t exist");
 				continue; //if a client doesn`t exist, jus continue;
