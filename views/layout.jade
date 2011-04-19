@@ -12,12 +12,12 @@ html
           e.preventDefault();
           e.stopPropagation();
           socket.send(JSON.stringify({msg:$("#msg").val()}));
+          $("#msg").val("");
           return false;
         });
       }) ;
       socket.on('message', function(data) {
         $("#response").append("<li>" + data + "</li>");
-        $("#msg").val("");
       });
   body
     #wrapper
