@@ -3,7 +3,7 @@ require('./helpers.js');
 
 var express = require('express'), // Include express engine
 		app = express.createServer(), // create node server
-		io = require('socket.io');  // Include Socket IO
+		io = require('socket.io');
 
 // Default APP Configuration
 app.configure(function(){
@@ -15,10 +15,15 @@ app.configure(function(){
 });
 
 app.configure('development', function(){
-    app.use(express.static(__dirname + '/public'));
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+   app.use(express.static(__dirname + '/public'));
+   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
+app.configure('production', function(){
+  var oneYear = 31557600000;
+  app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
+  app.use(express.errorHandler());
+});
 // Index Route
 app.get('/', function(req, res){ 
 	res.render('index', {
