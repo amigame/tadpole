@@ -1,0 +1,22 @@
+html
+  head
+    title= title
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js")
+    script(type='text/javascript',src='http://192.168.1.105:8000/socket.io/socket.io.js')
+    script()
+      var socket = new io.Socket("192.168.1.105"); 
+      socket.connect();
+      socket.on('connect', function(){ 
+        $("#chat").submit(function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          socket.send(JSON.stringify({msg:$("#msg").val()}));
+          return false;
+        });
+      }) ;
+      socket.on('message', function(data) {
+        $("#response").append("<li>" + data + "</li>");
+      });
+  body
+    #wrapper
+      != body
