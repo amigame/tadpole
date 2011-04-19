@@ -16,6 +16,7 @@ html
       }) ;
       socket.on('message', function(data) {
         $("#response").append("<li>" + data + "</li>");
+        $("#msg").val("");
       });
   body
     #wrapper
