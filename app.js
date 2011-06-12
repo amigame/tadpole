@@ -28,13 +28,13 @@ app.configure('production', function(){
 app.get('/', function(req, res){ 
 	res.render('index', {
 		locals: {
-			title: "web chat"
+			title: "Rumpetnode! It's Rumpetroll with a node backend"
 		}
 	});
 });
 
 // Listen on this port
-app.listen(9536); 
+app.listen(10050); 
   
 // Socket Connection
 var socket = io.listen(app),

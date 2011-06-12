@@ -1,0 +1,46 @@
+script(type="text/javascript", src="http://platform.twitter.com/widgets.js")
+script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
+
+script(src="js/lib/parseUri.js")
+script(src="js/lib/modernizr-1.5.min.js")
+script(src="js/lib/Stats.js")
+
+script(src="js/App.js")
+script(src="js/Model.js")
+script(src="js/Settings.js")
+script(src="js/Keys.js")
+script(src="js/WebSocketService.js")
+script(src="js/Camera.js")
+
+script(src="js/Tadpole.js")
+script(src="js/TadpoleTail.js")
+
+script(src="js/Message.js")
+script(src="js/WaterParticle.js")
+script(src="js/Arrow.js")
+script(src="js/formControls.js")
+
+script(src="js/main.js")
+
+script(src="js/analytics.js")
+
+script(type="text/javascript", src="http://use.typekit.com/znu4fui.js")
+script(type="text/javascript")
+	try{Typekit.load();}catch(e){}
+script(type='text/javascript',src='/socket.io/socket.io.js')
+script(src="json.js")
+script()
+	var socket = new io.Socket(window.location.hostname); 
+	socket.connect();
+	socket.on('connect', function(){ 
+		$("#chat").submit(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			socket.send(JSON.stringify({msg:$("#msg").val()}));
+			$("#msg").val("");
+			return false;
+		});
+	}) ;
+	socket.on('message', function(data) {
+		$("#response").append("<li>" + data + "</li>");
+	});
