@@ -1,0 +1,5 @@
+.nodester.appconfig
+.DS_Store
+data/daemon.out
+data/tadpole.db
+data/settings.yaml
