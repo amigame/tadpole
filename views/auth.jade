@@ -1,0 +1,7 @@
+script(src="js/lib/parseUri.js")
+script()
+	uri = parseUri(document.location)
+	if ( uri.queryKey.oauth_token ) {
+		window.opener.app.authorize(uri.queryKey.oauth_token, uri.queryKey.oauth_verifier);
+		window.close()
+	}

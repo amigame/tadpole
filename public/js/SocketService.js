@@ -1,3 +1,20 @@
+$(function(){
+	var socket = new io.Socket(window.location.hostname); 
+	socket.connect();
+	socket.on('connect', function(){ 
+		$("#chat").submit(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+			socket.send(JSON.stringify({msg:$("#msg").val()}));
+			$("#msg").val("");
+			return false;
+		});
+	}) ;
+	socket.on('message', function(data) {
+		$("#response").append("<li>" + data + "</li>");
+	});
+});
+	
 var WebSocketService = function(model, webSocket) {
 	var webSocketService = this;
 	

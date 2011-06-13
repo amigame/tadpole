@@ -33,6 +33,16 @@ app.get('/', function(req, res){
 	});
 });
 
+// Auth Route
+app.get('/auth', function(req, res){ 
+	res.render('auth', {
+		locals: {
+			title: "Authenticate Twitter"
+		}
+	});
+});
+
+
 // Listen on this port
 app.listen(10050); 
   
