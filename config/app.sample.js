@@ -3,6 +3,8 @@ module.exports = config = {
     "port": 9999,
     "twitter": {
         "key": "ACBDEFGHIJKLMNOPQRSTUVWXYZ",
-        "secret": "AC1BD2EF3GH4IJ5KL6MN7OP8QR9ST0UVWXYZ"
-    }
+        "secret": "AC1BD2EF3GH4IJ5KL6MN7OP8QR9ST0UVWXYZ",
+		"callback":   "http://rumpetnode.nodester.com"
+    },
+	"whitelist": ["rumpetnode.nodester.com","rumpetnode.makesit.es"]
 }

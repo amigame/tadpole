@@ -27,7 +27,8 @@ var App = function(aSettings, aCanvas) {
 			model.userTadpole.userUpdate(model.tadpoles, mouse.worldx, mouse.worldy);
 		}
 		
-		if(model.userTadpole.age % 6 == 0 && model.userTadpole.changed > 1 && webSocketService.hasConnection) {
+		//if(model.userTadpole.age % 6 == 0 && model.userTadpole.changed > 1 && webSocketService.hasConnection) {
+		if(model.userTadpole.age % 6 == 0 && model.userTadpole.changed > 1) {
 			model.userTadpole.changed = 0;
 			webSocketService.sendUpdate(model.userTadpole);
 		}
@@ -245,10 +246,12 @@ var App = function(aSettings, aCanvas) {
 		
 		model.arrows = {};
 		
-		webSocket 				= new WebSocket( model.settings.socketServer );
-		webSocket.onopen 		= app.onSocketOpen;
-		webSocket.onclose		= app.onSocketClose;
-		webSocket.onmessage 	= app.onSocketMessage;
+		webSocket 				= new io.Socket(window.location.hostname); 
+		webSocket.connect();
+		
+		webSocket.on('connection', app.onSocketOpen);
+		webSocket.on('message', app.onSocketMessage);
+		//webSocket.onclose		= app.onSocketClose;
 		
 		webSocketService		= new WebSocketService(model, webSocket);
 	})();

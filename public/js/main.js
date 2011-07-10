@@ -50,32 +50,6 @@ if(Modernizr.canvas && Modernizr.websockets) {
 	document.getElementById('force-init-button').addEventListener('click', forceInit);
 }
 
-var addStats = function() {
-	if (isStatsOn) { return; }
-	// Draw fps
-	var stats = new Stats();
-	document.getElementById('fps').appendChild(stats.domElement);
-
-	setInterval(function () {
-	    stats.update();
-	}, 1000/60);
-
-	// Array Remove - By John Resig (MIT Licensed)
-	Array.remove = function(array, from, to) {
-	  var rest = array.slice((to || from) + 1 || array.length);
-	  array.length = from < 0 ? array.length + from : from;
-	  return array.push.apply(array, rest);
-	};
-	isStatsOn = true;
-}
-
-//document.addEventListener('keydown',function(e) {
-//	if(e.which == 27) {
-//		addStats();
-//	}
-//})
-
-if(debug) { addStats(); }
 
 $(function() {
 	$('a[rel=external]').click(function(e) {

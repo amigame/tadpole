@@ -3,7 +3,7 @@
 (function($){
 	
 	$.fn.initChat = function() {
-		var input = $(this);
+		var input = this;
 		var chatText = $("#chatText");
 		var hidden = true;
 		var messageHistory = [];
@@ -30,6 +30,7 @@
 			setTimeout(function(){input.focus()}, 0.1);
 		});
 		input.keydown(function(e){
+			
 			if(input.val().length > 0) {
 				//set timeout because event occurs before text is entered
 				setTimeout(updateDimensions,0.1);
@@ -101,6 +102,6 @@
 	}
 	
 	$(function() {
-		//$('#chat').initChat();
+		$('#chat').initChat();
 	});
 })(jQuery);
