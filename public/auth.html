@@ -11,12 +11,11 @@
 		<script src="js/lib/parseUri.js"></script>                
 		<script>
 			
-			//uri = parseUri(document.location)
-			//if ( uri.queryKey.oauth_token ) {
-					//window.opener.app.authorize(uri.queryKey.oauth_token, uri.queryKey.oauth_verifier);
-					window.opener.app.authorize('2hJ0TEhTpStUMKdm25gQ', 'Y5KQCOKn4lfpu0J7dDF0s2DrZe1YpxPYVrHQ0F9zk');
+			uri = parseUri(document.location)
+			if ( uri.queryKey.oauth_token ) {
+					window.opener.app.authorize(uri.queryKey.oauth_token, uri.queryKey.oauth_verifier);
 					window.close()
-			//}
+			}
 			
 		</script>
 	</body>

@@ -3,4 +3,5 @@
 data/daemon.out
 data/tadpole.db
 data/settings.yaml
-node_modules/
+node_modules
+config/app.js

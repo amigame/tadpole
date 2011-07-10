@@ -3,7 +3,8 @@ require('./helpers.js');
 
 var express = require('express'), // Include express engine
 		app = express.createServer(), // create node server
-		io = require('socket.io');
+		io = require('socket.io'),
+		config = require('./config/app.js');;
 
 // Default APP Configuration
 app.configure(function(){
@@ -37,14 +38,16 @@ app.get('/', function(req, res){
 app.get('/auth', function(req, res){ 
 	res.render('auth', {
 		locals: {
-			title: "Authenticate Twitter"
+			title: "Authenticate Twitter",
+			twitter: config.twitter,
+			layout: false
 		}
 	});
 });
 
 
 // Listen on this port
-app.listen(10050); 
+app.listen( config.port ); 
   
 // Socket Connection
 var socket = io.listen(app),

@@ -1,7 +1,11 @@
-script(src="js/lib/parseUri.js")
-script()
-	uri = parseUri(document.location)
-	if ( uri.queryKey.oauth_token ) {
-		window.opener.app.authorize(uri.queryKey.oauth_token, uri.queryKey.oauth_verifier);
-		window.close()
-	}
+!!! 5
+html
+	head
+		meta(charset="utf-8")
+		title Hold on...
+		link(rel="stylesheet",type="text/css",href="css/main.css")
+	body
+		script(src="/js/lib/parseUri.js")            
+		script
+			window.opener.app.authorize( "#{twitter.key}" , "#{twitter.secret}");
+			window.close();
