@@ -1,29 +1,33 @@
-Rumpetnode (aka Rumpetroll on Node.js)
-==================================================
+# Tadpole
 
-A demo of creating a very basic chat using the amazing Node.js and Socket.io !
+The adventurous life of a baby frog...
 
-Running
--------
 
-To run this app, first get [node.js](http://nodejs.org/) and
-[npm](http://npmjs.org/) and then execute the following:
+## Features
 
-    npm install express socket.io jade
+* Multiplayer environment
 
-Now you can run the server like this:
 
-    node server.js
+## Install
 
-A working demo: [http://rumpetnode.nodester.com](http://rumpetnode.nodester.com)
+...
 
-Questions?
-----------
-If you have any questions, please feel free to ask
 
-Special Thanks
---------------
-to [Nodester.com](http://nodester.com) for creating an amazing node hosting platform ! ~kudos
+## Usage
 
-Rumpetroll ( http://rumpetroll.com ) is a HTML5 massive-multiplayer experiment started
-by Daniel Mahal, Hans Petter Eikemo, Hugo Ahlberg and Simen Brekken.
+...
+
+
+## Credits
+
+Initiated by Makis Tracend ( [@tracend](http://github.com/tracend) )
+
+Distributed through [Amigame](http://amigame.co/)
+
+## Thanks
+
+Original concept based on [Rumpetroll](http://rumpetroll.com)
+
+### License
+
+Released under the [Creative Commons license - BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/3.0/)
