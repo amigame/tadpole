@@ -12,8 +12,8 @@ var express = require('express'), // Include express engine
 var DEV = !(process.env.NODE_ENV == 'production');
 
 // Default APP Configuration
-app.set('view engine', 'jade'); // uses JADE templating engine
-app.set('views', __dirname + '/views'); // default dir for views
+//app.set('view engine', 'jade'); // uses JADE templating engine
+//app.set('views', __dirname + '/views'); // default dir for views
 app.use(methodOverride());
 
 if( DEV ){
