@@ -15,22 +15,18 @@ var DEV = !(process.env.NODE_ENV == 'production');
 app.set('view engine', 'jade'); // uses JADE templating engine
 app.set('views', __dirname + '/views'); // default dir for views
 app.use(methodOverride());
-//app.use(express.logger());
-//app.use(app.router);
 
 if( DEV ){
 	app.use(express.static(__dirname + '/public'));
-//	app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 } else {
 	var oneYear = 31557600000;
 	app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
-//	app.use(express.errorHandler());
 }
 // Index Route
 app.get('/', function(req, res){
 	res.render('index', {
 		locals: {
-			title: "Rumpetnode! It's Rumpetroll with a node backend"
+			title: "Tadpole"
 		}
 	});
 });
@@ -49,7 +45,6 @@ socket.on('connection', function(client){
 
 	// On Message, send message to everyone
  	client.on('message', function(data){
-		console.log('got message ==> ' + data);
 		data = JSON.parse(data); // parse string data to json
 
 		for(var i=0;i<clients.length;i++) {
@@ -62,7 +57,7 @@ socket.on('connection', function(client){
 			}
 		}
 	});
-  client.on('disconnect', function(){
+	client.on('disconnect', function(){
 		clients.splice(index,1); // remove client from array
 		console.log("after length ===> " +clients.length);
 	});
