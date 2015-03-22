@@ -1,0 +1,38 @@
+{
+	"name": "tadpole",
+	"version": "1.0.0",
+	"private": true,
+	"author": "kdi",
+	"contributors": [
+		{ "name": "Makis Tracend", "email": "makis@kdi.co" },
+		{ "name": "Lyndel Thomas", "email": "lyndel@kdi.co" }
+	],
+	"homepage": "http://tadpole.amigame.co",
+	"domains": [
+		"tadpole.amigame.co",
+		"www.tadpole.amigame.co"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:amigame/tadpole.git"
+	},
+	"bugs": {
+		"url": "https://github.com/amigame/issues"
+	},
+	"licenses": [
+		{
+		"type": "Copyrighted - CC BY-NC-ND",
+		"url": "http://creativecommons.org/licenses/by-nc-nd/3.0/"
+		}
+	],
+	"engines": {
+		"node": ">0.8.x"
+	},
+	"main": "index",
+	"scripts": {
+		"start": "server.js"
+	},
+	"dependencies": {
+		"express": "4.7.2"
+	}
+}
