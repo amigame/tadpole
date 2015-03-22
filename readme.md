@@ -30,4 +30,4 @@ Original concept based on [Rumpetroll](http://rumpetroll.com)
 
 ### License
 
-Released under the [Creative Commons license - BY-NC-ND](http://creativecommons.org/licenses/by-nc-nd/3.0/)
+Released under the [Creative Commons license - BY-NC 4.0](http://creativecommons.org/licenses/by-nc/4.0/)
