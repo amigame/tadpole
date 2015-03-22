@@ -1,3 +1,3 @@
 var Settings = function() {
-  this.socketServer = 'ws://localhost:10050';
+	this.socketServer = 'ws://localhost:80';
 }
