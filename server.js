@@ -4,7 +4,7 @@ require('./helpers.js');
 var express = require('express'), // Include express engine
 		app = express.createServer(), // create node server
 		io = require('socket.io'),
-		config = require('./config/app.js');;
+		config = require('./config/server');
 
 // Default APP Configuration
 app.configure(function(){
@@ -26,7 +26,7 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 // Index Route
-app.get('/', function(req, res){ 
+app.get('/', function(req, res){
 	res.render('index', {
 		locals: {
 			title: "Rumpetnode! It's Rumpetroll with a node backend"
@@ -35,11 +35,11 @@ app.get('/', function(req, res){
 });
 
 // Auth Route
-app.get('/auth', function(req, res){ 
+app.get('/auth', function(req, res){
 	res.render('auth', {
 		locals: {
 			title: "Authenticate Twitter",
-			twitter: config.twitter,
+			//twitter: config.twitter,
 			layout: false
 		}
 	});
@@ -47,22 +47,22 @@ app.get('/auth', function(req, res){
 
 
 // Listen on this port
-app.listen( config.port ); 
-  
+app.listen( config.port );
+
 // Socket Connection
 var socket = io.listen(app),
  		clients = []; // List of all connected Clients
 
 // When user gets connected
-socket.on('connection', function(client){ 
-	// new client is here! 
+socket.on('connection', function(client){
+	// new client is here!
 	var index = clients.push(client) - 1; // get array index of new client
-	
+
 	// On Message, send message to everyone
- 	client.on('message', function(data){ 
+ 	client.on('message', function(data){
 		console.log('got message ==> ' + data);
 		data = JSON.parse(data); // parse string data to json
-		
+
 		for(var i=0;i<clients.length;i++) {
 			try {
 				if(clients[i] != undefined)
@@ -73,7 +73,7 @@ socket.on('connection', function(client){
 			}
 		}
 	});
-  client.on('disconnect', function(){  
+  client.on('disconnect', function(){
 		clients.splice(index,1); // remove client from array
 		console.log("after length ===> " +clients.length);
 	});
