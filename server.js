@@ -35,18 +35,6 @@ app.get('/', function(req, res){
 	});
 });
 
-// Auth Route
-app.get('/auth', function(req, res){
-	res.render('auth', {
-		locals: {
-			title: "Authenticate Twitter",
-			//twitter: config.twitter,
-			layout: false
-		}
-	});
-});
-
-
 // Listen on this port
 server.listen( config.port );
 

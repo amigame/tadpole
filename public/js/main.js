@@ -19,20 +19,14 @@ var initApp = function() {
 	document.addEventListener('mousemove', 		app.mousemove, false);
 	document.addEventListener('mousedown', 		app.mousedown, false);
 	document.addEventListener('mouseup',			app.mouseup, false);
-	
+
 	document.addEventListener('touchstart',   app.touchstart, false);
 	document.addEventListener('touchend',     app.touchend, false);
 	document.addEventListener('touchcancel',  app.touchend, false);
-	document.addEventListener('touchmove',    app.touchmove, false);	
+	document.addEventListener('touchmove',    app.touchmove, false);
 
 	document.addEventListener('keydown',    app.keydown, false);
 	document.addEventListener('keyup',    app.keyup, false);
-	
-	document.getElementById('authorize-user-button').addEventListener('click', function(e) { 
-		app.authorize(null,null);
-		authWindow = window.open("/auth","","width=950,height=460,menubar=no,toolbar=no,location=no,directories=no,status=no,scrollbars=yes,resizable=yes')")
-		return false;
-	});
 
 	setInterval(runLoop,30);
 }
@@ -46,7 +40,7 @@ var forceInit = function() {
 if(Modernizr.canvas && Modernizr.websockets) {
 	initApp();
 } else {
-	document.getElementById('unsupported-browser').style.display = "block";	
+	document.getElementById('unsupported-browser').style.display = "block";
 	document.getElementById('force-init-button').addEventListener('click', forceInit);
 }
 
